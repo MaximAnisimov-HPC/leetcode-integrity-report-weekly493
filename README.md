@@ -9,15 +9,24 @@ An analysis of 1000+ solutions from recent LeetCode Weekly/Biweekly contests usi
 
 My engine identified several high-density clusters where participants submitted structurally identical code. These are not 'similar ideas' — these are mathematically identical AST (Abstract Syntax Tree) signatures.
 
-### 🔴 Critical Cluster Q3 (Example)
+### 🔴 CRITICAL PLAGIARISM NETWORK Q3
 - **Similarity:** 100%
 - **Group Size:** 43 nodes (participants)
 - **Evidence:** Ranks [6, 21, 53, 57, 66, 80, 81, 107, 111, 118, 119, 124, 140, 142, 155, 171, 203, 237, 246, 265, 280, 284, 290, 301, 324, 325, 332, 358, 383, 401, 403, 407, 420, 451, 467, 475, 480, 516, 518, 591, 594, 696, 762] share identical logic signature. Logic structure matching confirmed.
 - **Violation:** PLAGIARISM NETWORK DETECTED
 - **Method:** N-Gram Token Matching.
 
-
 ![Cluster Visualization](./images/Cluster_Q3_1.png)
+
+### 🔴 CRITICAL PLAGIARISM NETWORK Q3
+- **Similarity:** 95%
+- **Group Size:** 33 nodes (participants)
+- **Evidence:** Ranks [8, 39, 114, 183, 194, 218, 227, 240, 263, 281, 294, 307, 311, 313, 317, 351, 353, 357, 364, 367, 390, 418,
+436, 470, 472, 506, 512, 596, 751, 761, 814, 928, 999] share identical logic signature. Logic structure matching
+confirmed.
+- **Violation:** PLAGIARISM NETWORK DETECTED
+- **Method:** N-Gram Token Matching.
+
 ![Cluster Visualization](./images/Cluster_Q3_11.png)
 
 **YOU CAN SEE THE SCALE OF THE ISSUE IN FULL PDF WITH EVIDENCE, VIOLATIONS and IMAGES**
