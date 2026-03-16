@@ -7,7 +7,7 @@ An analysis of 1,000+ solutions from recent LeetCode Weekly/Biweekly contests us
 
 ## 📊 The Discovery: Mass Cheating Clusters
 
-My engine identified several high-density clusters where participants submitted structurally identical code. These are not "similar ideas" — these are mathematically identical AST (Abstract Syntax Tree) signatures.
+My engine identified several high-density clusters where participants submitted structurally identical code. These are not 'similar ideas' — these are mathematically identical AST (Abstract Syntax Tree) signatures.
 
 ### 🔴 Critical Cluster Q3 (Example)
 - **Similarity:** 100%
