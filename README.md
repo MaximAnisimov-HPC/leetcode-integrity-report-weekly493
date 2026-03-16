@@ -19,10 +19,10 @@ My engine identified several high-density clusters where participants submitted 
 ![Cluster Visualization](./images/Cluster_Q3_1.png)
 
 ### 🔴 CRITICAL PLAGIARISM NETWORK Q3
-- **Similarity:** 95%
+- **Similarity:** 97%
 - **Group Size:** 33 nodes (participants)
-- **Evidence:** Ranks [8, 39, 114, 183, 194, 218, 227, 240, 263, 281, 294, 307, 311, 313, 317, 351, 353, 357, 364, 367, 390, 418,
-436, 470, 472, 506, 512, 596, 751, 761, 814, 928, 999] share identical logic signature. Logic structure matching
+- **Evidence:** Ranks [24, 73, 85, 123, 129, 154, 231, 236, 244, 264, 298, 326, 343, 365, 386, 402, 422, 431, 434, 439, 443, 477,
+487, 511, 523, 576, 580, 582, 676, 767, 804, 807, 817] share identical logic signature. Logic structure matching
 confirmed.
 - **Violation:** PLAGIARISM NETWORK DETECTED
 - **Method:** N-Gram Token Matching.
