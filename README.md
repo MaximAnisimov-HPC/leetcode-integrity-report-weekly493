@@ -81,6 +81,6 @@ I hope this data helps the LeetCode Engineering Team improve the contest environ
 | **Detection Basis** | Text/Token-based | **AST Logic Skeleton** |
 | **Bypass Difficulty** | Low (Rename variables/comments) | **High (Requires full logic rewrite)** |
 | **Scalability** | Unknown | **50,000+ solutions in < 5 mins** |
-| **Codebase** | Heavy/Legacy | **Extremely Lean (< 2000 lines)** |
+| **Codebase** | Heavy/Legacy | **Extremely Lean (< 500 lines)** |
 
 **Contact:** pooacc2@gmail.com
