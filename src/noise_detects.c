@@ -14,7 +14,6 @@ EXPORT bool detect_ai_c(const char *code) {
         "# initialize variables",
         "float('-inf')"
     };
-
     for (int i = 0; i < 4; i++) {
         if (strstr(code, patterns[i]) != NULL) {
             score++;
