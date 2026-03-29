@@ -12,7 +12,7 @@ class AntiCheatHacker:
         self.data = parse_dump(file_path)
         self.reports, self.clusters = [], defaultdict(list)
         
-        # Паттерны для AI
+        # AI Patterns (Can add more to find more suspicious accounts)
         p = lambda r: re.compile(r, re.I)
         self.ai_patterns = {
             "full": {p(r"// Step \d+:"): "Steps", p(r"// Time Complexity:"): "Complexity", 
@@ -74,7 +74,7 @@ class AntiCheatHacker:
             elif found_ai:
                 gen_report(self, sol, [sol['rank']], found_ai)
                 processed_indices.add(i)
-
+    # Final PDF report just visualise the scale of issue
     def save_final_report(self, filename="LEETCODE_AUDIT_REPORT.pdf"):
         save_report(self, filename)
 
