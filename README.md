@@ -1,5 +1,4 @@
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Research](https://img.shields.io/badge/Status-Active-green.svg)](https://github.com/Afghan-0372/leetcode-integrity-report)
+
 # LeetCode Integrity Crisis: Structural Plagiarism Report
 
 
