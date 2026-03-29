@@ -29,7 +29,7 @@ def parse_dump(file_path):
 
     # Compile pattern for block RANKS
     rank_pattern = re.compile(r"### RANK (\d+) ###\n(.*?)\n##################", re.DOTALL)
-    rank_blocks = rank_pattern.findall(content*5) # u Can multiply by 10 to multiply data and check scalability
+    rank_blocks = rank_pattern.findall(content*10) # scalability
     
     parsed = []
     for rank, block in rank_blocks:
