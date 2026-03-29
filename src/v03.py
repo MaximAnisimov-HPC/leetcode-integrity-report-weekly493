@@ -1,15 +1,16 @@
 import re, time, tracemalloc
 from collections import defaultdict
-from multiprocessing import Pool, cpu_count
+import multiprocessing as mp
 from functools import partial
-from report_modules import gen_report, save_report
-from utils import parse_dump, get_logic_signature, normalize, get_ast_fingerprint, detect_ai_noise
-from compare_worker import compare_worker_serial, compare_worker_original
+# imports
+import report_modules as rm
+import utils as ut
+import compare_worker as cw
 
 class Engine:
     def __init__(self, file_path):
         self.file_path = file_path
-        self.data = parse_dump(file_path)
+        self.data = ut.parse_dump(file_path)
         self.reports, self.clusters = [], defaultdict(list)
         
         # AI Patterns
@@ -22,11 +23,11 @@ class Engine:
 
     def _prepare_solutions(self, solutions):
         for s in solutions:
-            lm = s['logic_masked'] = normalize(s['code'])
+            lm = s['logic_masked'] = ut.normalize(s['code'])
             s.update({
-                'signature': get_logic_signature(s['code']),
-                'ast_fp': get_ast_fingerprint(s['code']),
-                'has_ai_noise': detect_ai_noise(s['code']),
+                'signature': ut.get_logic_signature(s['code']),
+                'ast_fp': ut.get_ast_fingerprint(s['code']),
+                'has_ai_noise': ut.detect_ai_noise(s['code']),
                 'ng_set': set(lm[k:k+4] for k in range(len(lm)-3)) if len(lm) >= 10 else set()
             })
 
@@ -43,11 +44,11 @@ class Engine:
             
             t = time.time()
             if N <= 1200:
-                results = [compare_worker_serial(i, solutions) for i in range(N)]
+                results = [cw.compare_worker_serial(i, solutions) for i in range(N)]
             else:
                 # Fixed #### only transfer solutions to partial
-                with Pool(processes=max(2, cpu_count()-2)) as pool:
-                    func = partial(compare_worker_original, solutions=solutions)
+                with mp.Pool(processes=max(2, mp.cpu_count()-2)) as pool:
+                    func = partial(cw.compare_worker_original, solutions=solutions)
                     results = pool.map(func, enumerate(solutions))
             
             print(f"- Processed in {time.time() - t:.4f}s")
@@ -68,15 +69,15 @@ class Engine:
             if is_group:
                 avg = int((sum(sims)/len(sims))*100) if sims else 100
                 self.clusters[q_name].append({"ranks": sorted(cluster), "avg_sim": avg})
-                gen_report(self, sol, cluster, found_ai)
+                rm.gen_report(self, sol, cluster, found_ai)
                 for r in cluster: 
                     if r in r2i: processed_indices.add(r2i[r])
             elif found_ai:
-                gen_report(self, sol, [sol['rank']], found_ai)
+                rm.gen_report(self, sol, [sol['rank']], found_ai)
                 processed_indices.add(i)
     # Final PDF report just visualise the scale of issue
     def save_final_report(self, filename="LEETCODE_AUDIT_REPORT.pdf"):
-        save_report(self, filename)
+        rm.save_report(self, filename)
 
 if __name__ == "__main__":
     tracemalloc.start()
