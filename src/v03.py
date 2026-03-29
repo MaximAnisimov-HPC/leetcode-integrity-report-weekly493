@@ -6,13 +6,13 @@ from report_modules import gen_report, save_report
 from utils import parse_dump, get_logic_signature, normalize, get_ast_fingerprint, detect_ai_noise
 from compare_worker import compare_worker_serial, compare_worker_original
 
-class AntiCheatHacker:
+class Engine:
     def __init__(self, file_path):
         self.file_path = file_path
         self.data = parse_dump(file_path)
         self.reports, self.clusters = [], defaultdict(list)
         
-        # AI Patterns (Can add more to find more suspicious accounts)
+        # AI Patterns
         p = lambda r: re.compile(r, re.I)
         self.ai_patterns = {
             "full": {p(r"// Step \d+:"): "Steps", p(r"// Time Complexity:"): "Complexity", 
@@ -42,7 +42,7 @@ class AntiCheatHacker:
             self._prepare_solutions(solutions)
             
             t = time.time()
-            if N <= 1200: # SERIAL_THRESHOLD
+            if N <= 1200:
                 results = [compare_worker_serial(i, solutions) for i in range(N)]
             else:
                 # Fixed #### only transfer solutions to partial
@@ -82,10 +82,9 @@ if __name__ == "__main__":
     tracemalloc.start()
     start = time.time()
     
-    hacker = AntiCheatHacker("contest_dump.txt")
+    hacker = Engine("contest_dump.txt")
     hacker.analyze()
     
-
     _, peak = tracemalloc.get_traced_memory()
     print(f"Done in {time.time()-start:.2f}s | Peak RAM: {peak/10**6:.2f}MB")
     #hacker.save_final_report()
